@@ -11,4 +11,6 @@ public interface PublicacionServicio {
     public List<PublicacionDTO> obtenerTodasLasPublicaciones();
 
     public PublicacionDTO obtenerPorId(Long id);
+
+    public PublicacionDTO actualizarPublicacion(PublicacionDTO publicacionDTO, Long id);
 }

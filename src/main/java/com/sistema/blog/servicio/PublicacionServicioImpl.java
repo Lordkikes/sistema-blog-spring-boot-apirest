@@ -44,6 +44,20 @@ public class PublicacionServicioImpl implements PublicacionServicio{
         return mapearDTO(publicacion);
     }
 
+    @Override
+    public PublicacionDTO actualizarPublicacion(PublicacionDTO publicacionDTO, Long id) {
+
+        Publicacion publicacion = publicacionRepositorio.findById(id).orElseThrow(() ->new ResourceNotFoundException("Publicacion", "id", id));
+
+        publicacion.setTitulo(publicacionDTO.getTitulo());
+        publicacion.setDescripcion(publicacionDTO.getDescripcion());
+        publicacion.setContenido(publicacionDTO.getContenido());
+
+        Publicacion publicacionActualizada = publicacionRepositorio.save(publicacion);
+
+        return mapearDTO(publicacionActualizada);
+    }
+
     //Convierte Entidad a DTO
     private PublicacionDTO mapearDTO(Publicacion publicacion){
         PublicacionDTO publicacionDTO = new PublicacionDTO();

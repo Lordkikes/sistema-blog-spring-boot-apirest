@@ -33,4 +33,10 @@ public class PublicacionControlador {
         return ResponseEntity.ok(publicacionServicio.obtenerPorId(id));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<PublicacionDTO> actualizarPublicacion(@RequestBody PublicacionDTO publicacionDTO, @PathVariable(name = "id") Long id ){
+        PublicacionDTO publicacionRespuesta = publicacionServicio.actualizarPublicacion(publicacionDTO, id);
+        return new ResponseEntity<>(publicacionRespuesta, HttpStatus.OK);
+    }
+
 }
