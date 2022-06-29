@@ -2,6 +2,7 @@ package com.sistema.blog.servicio;
 
 import com.sistema.blog.dto.PublicacionDTO;
 import com.sistema.blog.entidades.Publicacion;
+import com.sistema.blog.excepciones.ResourceNotFoundException;
 import com.sistema.blog.repositorio.PublicacionRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,14 @@ public class PublicacionServicioImpl implements PublicacionServicio{
 
         return publicaciones.stream().map(this::mapearDTO).collect(Collectors.toList());
 
+    }
+
+    @Override
+    public PublicacionDTO obtenerPorId(Long id) {
+
+        Publicacion publicacion = publicacionRepositorio.findById(id).orElseThrow(() ->new ResourceNotFoundException("Publicacion", "id", id));
+
+        return mapearDTO(publicacion);
     }
 
     //Convierte Entidad a DTO

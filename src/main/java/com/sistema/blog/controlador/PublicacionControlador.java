@@ -28,4 +28,9 @@ public class PublicacionControlador {
         return publicacionServicio.obtenerTodasLasPublicaciones();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PublicacionDTO> listarPublicacionPorId(@PathVariable(name = "id") Long id) {
+        return ResponseEntity.ok(publicacionServicio.obtenerPorId(id));
+    }
+
 }
