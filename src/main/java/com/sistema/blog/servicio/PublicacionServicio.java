@@ -7,7 +7,7 @@ public interface PublicacionServicio {
 
     public PublicacionDTO crearPublicacion(PublicacionDTO publicacionDTO);
 
-    public PublicacionRespuesta obtenerTodasLasPublicaciones(int numeroPagina, int medidaPagina);
+    public PublicacionRespuesta obtenerTodasLasPublicaciones(int numeroPagina, int medidaPagina, String ordenarPor, String sortDir);
 
     public PublicacionDTO obtenerPorId(Long id);
 
